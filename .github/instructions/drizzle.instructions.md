@@ -26,6 +26,24 @@ The app's data lives in a local SQLite database accessed through **Drizzle ORM**
 - Foreign keys use `.references(() => other.id)`.
 - Export inferred types (`typeof table.$inferSelect`) and build app-facing types from them — don't redeclare row shapes by hand.
 
+## Comments and TSDoc
+
+- Comments must explain intent, invariants, or a non-obvious database decision; do not restate the SQL or TypeScript immediately below the comment.
+- Every exported function in `db/` and `src/lib/` requires TSDoc/JSDoc with a concise purpose, `@param` entries for every parameter, and an `@returns` description. For data-access helpers, document that the injectable `db` argument is supplied by pages or in-memory tests.
+- Keep documentation aligned with the implementation. Update or delete it in the same change when behavior changes.
+
+```ts
+/**
+ * Return games in stable title order for deterministic static builds.
+ *
+ * @param db Drizzle database instance, injected by the page or test.
+ * @returns Games with their publisher and category relations.
+ */
+export async function getAllGames(db: Database): Promise<Game[]> {
+  // Query implementation.
+}
+```
+
 ## Migrations Workflow
 
 1. Edit `schema.ts`.
