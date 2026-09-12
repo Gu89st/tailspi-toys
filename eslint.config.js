@@ -40,4 +40,14 @@ export default [
       parser: tseslint.parser,
     },
   },
+  {
+    files: ["**/*.ts", "**/*.astro"],
+    rules: {
+      // Keep TypeScript formatting consistent without a formatter dependency.
+      quotes: ["error", "single", { avoidEscape: true }],
+      semi: ["error", "always"],
+      "comma-dangle": ["error", "always-multiline"],
+      "eol-last": ["error", "always"],
+    },
+  },
 ];

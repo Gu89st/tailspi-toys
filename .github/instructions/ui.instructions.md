@@ -49,7 +49,13 @@ Refer to technology-specific instruction files:
 - Create reusable components for common UI patterns
 - Keep components focused on a single responsibility
 - Use props for configuration, not duplication
-- Document component APIs with TypeScript types
+- Document component APIs with a `Props` interface in the component frontmatter. Add TSDoc comments for the interface and any prop whose purpose or accepted values are not self-evident.
+
+### Comments and Documentation
+
+- Comments should preserve design intent, accessibility reasoning, or a non-obvious tradeoff.
+- Do not restate visible markup, class names, or straightforward event-handler mechanics.
+- Update or remove comments when the associated UI behavior changes.
 
 ## Development Workflow
 
